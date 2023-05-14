@@ -21,18 +21,21 @@
     
 }
 #navbar a{
-    animation:pulse 3s infinite;
+    animation:shake 5s infinite;
     user-select: none;
     text-decoration: underline;
     cursor:pointer;
     
 }
-
+#navbar a:hover{
+   opacity:0.35;
+    
+}
 
 
 
 h1{
-    font-size: 300%;
+    font-size: 270%;
     padding:10px;
 }
 
@@ -69,14 +72,16 @@ h2{
     border-radius: 10px;
     filter: grayscale(100%);
 }
+
+
 .profile-title{
     font-weight: bold;
     font-size: 140%;
     
 }
 
-#creditbox{
-        margin: auto;
+.narrow{
+    margin: auto;
     max-width: 60vh
 }
 
@@ -88,7 +93,16 @@ h2{
     border-radius: 10px;
     min-height:10vh;
     box-shadow: 0px 4px #bdbdbd;
+    cursor:pointer;
 }
+
+.profilebox:hover{
+    animation: tilt 0.5s;
+    
+}
+
+
+
 #creditbox p{
     font-size:80%; 
     overflow:hidden;
@@ -111,6 +125,12 @@ h2{
         0% {opacity:100%;}
         60% {opacity:100%;}
       100% {opacity:0%;}
+  }
+  @keyframes tilt {
+  
+        0% {transform: rotate3d(1, 0, 0, 0deg);filter:opacity(1)}
+        50% {transform: rotate3d(1, 0, 0, 30deg);filter:opacity(0.6)}
+      100% {transform: rotate3d(1, 0, 0, 0deg);filter:opacity(1)}
   }
 
   @keyframes pulse {
@@ -144,11 +164,4 @@ animation: preload 3s;
     left: 0;
     right: 0;
   }
-
-  
-  @keyframes preload {
-  
-        0% {opacity:100%;}
-        60% {opacity:100%;}
-      100% {opacity:0%;}
-  }
+s
