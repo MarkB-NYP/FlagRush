@@ -1,14 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>FlagRush: Ep 1</title>
-    <link rel="stylesheet" href="FlagRushstyle.css">
-    <link rel="icon" type="image/x-icon" href="./Images/favicon.png">
+  <head>
+    <title>FlagRush 1 Player Portal</title>
+<link rel="stylesheet" href="FlagRushstyle.css">
+      
+      
+      <style>
+              #leaderboard tr th{
+            
+            border-bottom: 1px solid black;
+        }
+        
+        #leaderboard table,td, th{
+            padding:10px;
+
+            
+        }
+          td{
+              text-align: center;
+              
+          }
+    td:first-child { text-align: right; } 
+
+          
+          input, button {
+              
+              font-size: 1.0001em;
+              border: solid black 3px;
+                border-radius: 5px;
+                box-shadow: 0px 4px #bdbdbd;
+              margin:1px;
+          }
+          
+          button{
+                  
+    cursor:pointer;
+              
+          }
+          
+          
+          button:hover{
+    animation: tilt 0.5s;
     
-    </head>
-<body>
-    
-    <div id='preloader'>
+}
+
+    </style>
+  </head>
+
+  <body>
+      <div id='preloader'>
     <svg-animate  trigger="loop">
            <svg id='preloader-icon' viewBox="0 0 681 681" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:anim="http://www.w3.org/2000/anim" anim="" anim:transform-origin="50% 50%" anim:duration="0.14" anim:ease="power1.out">
         <g id="9e240030">
@@ -74,140 +114,225 @@
       </svg>
         </svg-animate>
 </div>
-    <div id='contents'>
-    <div id='header'>
+      <div id='contents'>
+          <div id='header'>
 <p><a href='https://flagthecapture.blogspot.com/'><img height='50vw;'  src='./Images/FlagTheCapture%20New%20Logo.gif'></a>&nbsp;&nbsp;FlagTheCapture presents</p>
     <h1>FlagRush:<br>A CTF Mission</h1>
-            <div class='profilebox' style='min-height: 0px;'>
-        <i>26 May, 6pm - 2 June, 6pm [GMT +8]</i>
-        </div>
-        
-        
-    <div id='navbar'>
-    <a  onclick="smoothScroll('scenario')" >Scenario</a>&nbsp;|&nbsp;<a onclick="smoothScroll('how to play')">How to Play</a>&nbsp;|&nbsp;<a  onclick="smoothScroll('credits')">Credits</a><br><a onclick='window.location.href="https://flagthecapture.blogspot.com/2023/05/flagrush-1-leaderboard-import.html"' >Leaderboard</a>&nbsp;|&nbsp;<a onclick="window.open('https://discord
-        /EZQsaWVVPY','_blank')" >Discord</a>
-    
-    
-        </div>
-        </div>
-    <div id='info'>
-   <img width='70%;' src='./Images/FlagRush_Logo.png'>
+           
+        <i>26 May, 6pm - 2 June, 6pm [GMT +8]</i><br>
+        <a href='https://github.com/MarkB-NYP/FlagRushCTF_1'>Challenge Files</a>
 
+        </div>
+          <br>
+          <div id='login'>
+              
+                   <div id='authForm' class='profilebox' style='min-height: 0px;animation:none;cursor:default;'>
+     <h2>Login</h2>
+              <br>
 
-        
-        <h2 id='scenario'>*** Scenario ***</h2>
-        <br>
-        <p>Two months ago, the Investigative Cybercrime Unit (ICU) lost contact with their best agent, Will Hackett.</p><br>
-        
-        <img width='40%' style='animation:shake 3s infinite;' src='./Images/Will%20Hackett.png'>
-<p>Due to a manpower shortage, they were unable to check what actually happened to him. But now, the ICU has a new intern: You.</p><br>
-<p>Before Will disappeared, he left a thumb drive behind. Most of the data is encrypted, but we think it contains information about the last case he was working on.</p><br>
-        <img width='40%' style='animation:shake 3s infinite;animation-delay: 1s'  src='./Images/Thumbdrive.png'>
-<p>Your mission: Retrace Agent Will Hackett's investigation, and find out where he is now.</p><br>
-<p><i>FlagRush is inspired by mission-style CTFs such as CSIT&rsquo;s <a href='https://www.csit.gov.sg/events/tisc/tisc-2022'>The InfoSecurity Challenge (TISC)</a>, and immersive scenarios like the ones at <a href='https://hacktoria.com/'>Hacktoria.</a></i></p><br>
-<p><i>We hope you have as much fun playing FlagRush as we did creating it!</i></p>
-        <br>
-        <h2 id='how to play'>*** How to Play ***</h2>
-        <br>
-  
-        
-        <img width='40%' style='margin-bottom: 0;animation:pulse 5s infinite' src='./Images/ICU%20Logo%20Big.png'>
-        <div class='leftjust'>
-        <ol>
-    <li>
-        Get the challenge files from this <a href='https://github.com/MarkB-NYP/FlagRushCTF_1'>GitHub Repo</a>. You can choose to download it as a zip folder, or clone the repo directly using a Git tool.
-    </li>
-    <li>
-        Each &ldquo;puzzle&rdquo; folder is protected by a password. The password is the flag from the previous challenge
-    </li>
-    <li>
-        A separate folder named &ldquo;documents&apos;&apos; contains other files found on Will Hackett&rsquo;s thumb drive. It is up to you to determine if they are helpful for your current challenge.
-    </li>
-    <li>
-        Submit your flags through this <a href="https://docs.google.com/forms/d/1jZ5J292KtUyFAcRSVaknXji-VVIFT5zgVRmbKf7jIq0/viewform">Google Form</a>. You can also give us your feedback and suggestions, so we can make future CTFs even more awesome!
-    </li>
-    <li>
-        Leaderboard rankings will be determined by <b>highest challenge level submitted</b>, followed by <b>number of bonus flags</b>, and finally by the <b>time taken to submit the flags</b>.
-            
-    <li>
-        Please do not post writeups or solutions publicly before the<b> 3rd of June</b>.
-    </li>
+             <input type='text' id='username' name='username' placeholder='Username'><br>
+            <input type='text' id='password' name='password' placeholder='Password'><br><br>
+            <button onclick='Login()'>Login</button>
+            <button onclick='Register()'>Register</button>
+            <br><span id='authMessage'></span>
 
-</ol>
-            <br>
-        
- </div>
+                       
+          </div>
+          <div id='authenticated'>
+          <div id='flagForm' class='profilebox' style='min-height: 0px;animation:none;cursor:default;'>
+     <h2>Submit Flag</h2>
+              <br>
+
+             <input type='text' id='submitFlag' name='submitFlag' placeholder='FTC{....}' required>
+            <button onclick='Validate()'>Submit</button><br>
+            <span id='flagMessage'></span>
+              
+
+              
+          </div>
+          <br>
+          <h2 style='padding-left: 20px;'>Leaderboard (reload to update)</h2>
+          <br>
+          <table id='leaderboard'></table>
+                  
    
-                  <div class='profilebox' style='min-height: 0px;' onclick="window.open('https://discord.gg/EZQsaWVVPY','_blank')">
-        <i>Join the <a href='https://discord.gg/EZQsaWVVPY' target='_blank'> FlagRush Discord Server</a> for updates and to chat with other players.</i>
-        </div>
 
-        <div class='profilebox' style='min-height: 0px;' onclick='window.location.href="https://flagthecapture.blogspot.com/2022/05/f1r5t-fl4g-30-minute-ctf.html"'>
+
+              
+              </div>
+</div>
+      </div>
+      
+      
+      <script crossorigin="anonymous" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        //const host='http://localhost:5000'
+        const host = 'https://flagthecapture.pythonanywhere.com';
+        var userToken = '';
+        var userName = '';
+        
+        const hashes = ['6b63d9e767392ae6dffee6be16c09a216568c6adbf10e047c5f68865891a1018','6a0ced29e628937c9364a3bf94d298fd80d10e8672e49262ed8e5ece6da57c59','54df1c8842c0da42dda7bcbf9e35dc417ce2289e0f04176c9652e07f536d24a8','bc2b89ef09e723cf4da1e1cbb33defc1eea90f3467cb1294aff86ce6da4c12b4','0ce71a96546da8018d724fc79f3acdc5c0146473db644ad5efab69adf71f8edb','b073c9ee7e6169393208302b17c4e5f5bec2b6dadeaca208b09e442a7b20ce6a','873e1aeb9d0e297bf983407e8050e5a7a20711cfc26fc184603ca75e2df9a378']
+
+        
+        var flagbox = document.getElementById('submitFlag');
+        var flagmessage = document.getElementById('flagMessage');
+        var flagForm = document.getElementById('flagForm');
+        
+        var unamebox = document.getElementById('username');
+        var pwbox = document.getElementById('password');
+        var authmessage = document.getElementById('authMessage');
+        var authform = document.getElementById('authForm');
+
+      async function Register(){
+             var username = unamebox.value.trim();
+            var password = pwbox.value.trim();
+            var y;
+          
+            if (username == '' || password == '') {authmessage.textContent='Credentials cannot be empty.';authform.style.background='#f0b1a5';console.log(000)}
             
-        <i>New to CTFs? Check out our <a href='https://flagthecapture.blogspot.com/2022/05/f1r5t-fl4g-30-minute-ctf.html'> Introduction to CTF guide</a>.</i>
-        </div>
-        
-
-        
-        <br>
-        <h2 id='credits'>*** Credits ***</h2>
-        <br>
-        
-        <div class='leftjust' class='narrow' id='creditbox'>
-                                       <div class='profilebox'>
-            <img class='profile-image' src=./Images/Profile_Pictures/nicholas.png><p><a class='profile-title' >Nicholas Soh&nbsp;|&nbsp;Network Forensics<br></a>
-            Nicholas, an avid learner, spends his free time playing CTFs and doing HackTheBox.</p>
-                </div>
-            <br>
-                              <div class='profilebox'>
-            <img class='profile-image' src=./Images/Profile_Pictures/kabinet.png><p><a class='profile-title' href='https://ctf.edwinczd.com/'>Kabinet&nbsp;|&nbsp;Cloud<br></a>
-            Kabinet is a cloud security noob that likes playing cloud CTF.</p>
-                </div>
-            <br>
-                              <div class='profilebox'>
-            <img class='profile-image' src=./Images/Profile_Pictures/jong_han.jpg><p><a class='profile-title' href='https://jonghan.gitbook.io/'>Yeo Jong Han&nbsp;|&nbsp;Reverse Engineering<br></a>Jong Han is an avid CTF player. You can't find a CTF Discord server without his handle in it.</p>
-                </div>
-            <br>
-                              <div class='profilebox'>
-            <img class='profile-image' src=./Images/Profile_Pictures/gabriel.png><p><span class='profile-title'>Gabriel Seet&nbsp;|&nbsp;Image Forensics<br></span>
-            "I try to do cool stuff."</p>
-                </div>
-            <br>
-   
-                              <div class='profilebox'>
-            <img class='profile-image' src=./Images/Profile_Pictures/elton.png><p><a class='profile-title' href='https://eltontay.com/'>Elton Tay&nbsp;|&nbsp;OSINT <br></a>
-            The undisputed Evil Challenge Author who creates nothing but evil challenges.</p>
-                </div>
-            <br>
-            <div class='profilebox'>
-            <img class='profile-image' src=./Images/Profile_Pictures/mb.png><p><a class='profile-title' href='https://flagthecapture.blogspot.com'>Mark Bosco&nbsp;|&nbsp;Scenario Editor<br></a>
-            Mark enjoys playing and organising CTFs. He runs the FlagTheCapture website to share his interest in cybersecurity competitions.</p>
-                </div>
-
+            else {
+                
+                var serverRes = function() { return fetch(host+"/register", {
+                  method: "POST",
+                  headers: { "Content-type": "application/json" },
+                  body: JSON.stringify({ username: username, password: password })}).then((response) => response.json())
             
-
-            <br>
-                      
-        </div>
-              <footer>
-    <i>&copy; FlagTheCapture / challenge creators 2023</i>
-    </footer> <br> 
-        </div>
-
-    </div>
-
-  
-
+            }
+                y = await serverRes()
+                    console.log(y);
+                 if (y.Type == 'Error') {authmessage.textContent=y.Message;authform.style.background='#f0b1a5';}
+                 else if (y.Type == 'Success') {authmessage.textContent=`Registration Successful. Authenticated as "${username}".`;
+                                                authform.style.background='#b0f5b0';
+                                                userName=username;
+                                                userToken=CryptoJS.SHA256(password).toString();
+                                                sessionStorage.setItem("userName", userName);
+                                            sessionStorage.setItem("userToken", userToken);
+                                                 updateScoreboard();
+                                               
+                                               }
+                
+                }
     
+                
+            }
+        function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+         async function Login(){
+             authform.style.background='white';  
+             authmessage.textContent=''
+             await sleep(600);
+             var username = unamebox.value.trim();
+            var password = pwbox.value.trim();
+            var y;
+            if (username == '' || password == '') {authmessage.textContent='Credentials cannot be empty.';authform.style.background='#f0b1a5';console.log(000)}
+        
+            else {
+                 userName=username;
+                userToken=CryptoJS.SHA256(password).toString()
+                 authmessage.textContent=`Credentials set for "${username}". Re-login to change credentials.`;
+                
+                    authform.style.background='#b0f5b0';      
+                    sessionStorage.setItem("userName", userName);
+                    sessionStorage.setItem("userToken", userToken);
+                }
     
-    <script src="https://cdn.jsdelivr.net/npm/@figmania/webcomponent/build/index.umd.js"></script>
+                
+            }
+        
+        async function Validate(){
+             var t = flagbox.value.trim();
+            var y;
+            if (t == '') {flagmessage.textContent='Please enter a flag.';flagForm.style.background='#f0b1a5';}
+            
+            else if (!RegExp('^FTC{.+}$').test(t)){flagmessage.textContent='Wrong flag format.';flagForm.style.background='#f0b1a5';}
+            
+            else if (!hashes.includes(CryptoJS.SHA256(t).toString())){flagmessage.textContent='Invalid flag.';flagForm.style.background='#f0b1a5';}
+            
+            
+            
+            else {
+                
+                var serverRes = function() { return fetch(host+"/submitFlag", {
+                  method: "POST",
+                  headers: { "Content-type": "application/json" },
+                  body: JSON.stringify({ submitFlag: t, userToken: userToken, userName: userName })}).then((response) => response.json())
+            
+            }
+                y = await serverRes()
+                    console.log(y);
+                 if (y.Type == 'Error') {flagmessage.textContent=y.Message;flagForm.style.background='#f0b1a5';}
+                 else if (y.Type == 'Success') {flagmessage.textContent='You found a flag!';flagForm.style.background='#b0f5b0';
+                                               updateScoreboard();}
+                
+                }
+                
+                
+            }
+
+        
+        async function updateScoreboard(){
+            var playerArray=[];
+            let leaderboard = document.getElementById("leaderboard");
+            var serverRes = function() { return fetch(host+"/getScores", {
+                  method: "GET",
+                  }).then((response) => response.json())}
+                y = await serverRes()
+            
+            
+            for (const [key, value] of Object.entries(y)) {
+    var ranking = value.slice(0,5).reduce((a, b) => a + b, 0)+ value.slice(5,7).reduce((a, b) => a + b, 0)*0.99;
+    var levels = value.slice(0,5).reduce((a, b) => a + b, 0);
+                playerArray.push([ranking,key,levels,value[5],value[6],value[7]])
+}
+            
+            playerArray.sort(([a, b], [c, d]) => c - a || b - d);
+            
+            
+            
+            var tprefix=`<table id="leaderboard" style="background-blend-mode: darken; background-image: url(https://markb-nyp.github.io/FlagRush/Images/ICU%20Logo%20bg.png); background-position: center; background-repeat: no-repeat; background-size: contain; border-spacing: 0;">
+        <tr><th>Rank</th><th style="min-width: 20ch;">Name</th><th>Level</th><th>Bonus 1</th><th>Bonus 2</th><th style="min-width: 8ch;">Time</th></tr>`
+        
+            for (const x of playerArray) {  
+                
+              var rowdata=`<tr><td>${playerArray.indexOf(x)+1}</td><td><b>${x[1]}<br><\/td><td>${x[2]}</td><td>${x[3]}</td><td>${x[4]}</td><td><i>${x[5]}</i></td></tr>`                  
+                  tprefix += rowdata              
+                                }
+            
+              
+            leaderboard.outerHTML = tprefix +`</table>`
+            
+            
+            
+      
+        }
+    
+    // initialization tasks    
+    updateScoreboard()
+        
+    // load credentials from sessionStorage
+ 
+        var userName = sessionStorage.getItem("userName");
+        var userToken = sessionStorage.getItem("userToken");
+        
+        if (userName != null && userToken != null){
+            authmessage.textContent=`Credentials loaded for "${userName}". Re-login to change credentials.`;
+                
+                    authform.style.background='#b0f5b0';
+        }
+        
+
+ 
+    </script>
+          <script src="https://cdn.jsdelivr.net/npm/@figmania/webcomponent/build/index.umd.js"></script>
+          
     <script>
         
         document.getElementById('contents').style.display='none';
 setTimeout(function () {
     document.getElementById('preloader').remove();
     document.getElementById('contents').style.display='block';
-},2900)
+},29)
         
     window.smoothScroll = function(target) {
     
@@ -215,5 +340,7 @@ document.getElementById(target).scrollIntoView()
 }
     
     </script>
-    </body>
+  </body>
 </html>
+
+  
