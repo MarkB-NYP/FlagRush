@@ -45,6 +45,8 @@
 }
 
     </style>
+<script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
+
   </head>
 
   <body>
@@ -230,7 +232,7 @@
             else {
                  userName=username;
                 userToken=CryptoJS.SHA256(password).toString()
-                 authmessage.textContent=`Credentials set for "${username}". Re-login to change credentials.`;
+                 authmessage.textContent=`Credentials set for "${username}".`;
                 
                     authform.style.background='#b0f5b0';      
                     sessionStorage.setItem("userName", userName);
@@ -283,7 +285,9 @@
             for (const [key, value] of Object.entries(y)) {
     var ranking = value.slice(0,5).reduce((a, b) => a + b, 0)+ value.slice(5,7).reduce((a, b) => a + b, 0)*0.99;
     var levels = value.slice(0,5).reduce((a, b) => a + b, 0);
-                playerArray.push([ranking,key,levels,value[5],value[6],value[7]])
+                var datestring = luxon.DateTime.fromFormat(value[7], "dd/MM/yyyy, h:m:s").plus({hours: 8}).toFormat('dd/MM/yyyy, h:m:s');
+                if (datestring=='Invalid DateTime'){datestring='0'}
+                playerArray.push([ranking,key,levels,value[5],value[6],datestring])
 }
             
             playerArray.sort(([a, b], [c, d]) => c - a || b - d);
