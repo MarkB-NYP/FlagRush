@@ -22,6 +22,9 @@
           }
     td:first-child { text-align: right; } 
 
+          tr:nth-child(2) td:first-child::before { content:'🥇';} 
+          tr:nth-child(3) td:first-child::before { content:'🥈';} 
+          tr:nth-child(4) td:first-child::before { content:'🥉';} 
           
           input, button {
               
@@ -271,10 +274,27 @@
                 
                 
             }
+    function rank( a, b ) {
+      if ( a[0] < b[0] ){
+        return 1;
+      }
+      if ( a[0] > b[0] ){
+        return -1;
+      }
+        if ( a[6] < b[6] ){
+        return -1;
+      }
+      if ( a[6] > b[6] ){
+        return 1;
+      }
+      return 0;
+    }
+
 
         
+        var playerArray=[];
         async function updateScoreboard(){
-            var playerArray=[];
+            
             let leaderboard = document.getElementById("leaderboard");
             var serverRes = function() { return fetch(host+"/getScores", {
                   method: "GET",
@@ -283,14 +303,16 @@
             
             
             for (const [key, value] of Object.entries(y)) {
+                var datenum = luxon.DateTime.fromFormat(value[7], "dd/MM/yyyy, h:m:s")
     var ranking = value.slice(0,5).reduce((a, b) => a + b, 0)+ value.slice(5,7).reduce((a, b) => a + b, 0)*0.99;
     var levels = value.slice(0,5).reduce((a, b) => a + b, 0);
-                var datestring = luxon.DateTime.fromFormat(value[7], "dd/MM/yyyy, h:m:s").plus({hours: 8}).toFormat('dd/MM/yyyy, h:m:s');
-                if (datestring=='Invalid DateTime'){datestring='0'}
-                playerArray.push([ranking,key,levels,value[5],value[6],datestring])
+                var datestring = datenum.plus({hours: 8}).toFormat('dd/MM/yyyy, h:m:s');
+                
+                if (datestring=='Invalid DateTime'){datestring='-'}
+                playerArray.push([ranking,key,levels,value[5],value[6],datestring,datenum])
 }
             
-            playerArray.sort(([a, b], [c, d]) => c - a || b - d);
+            playerArray.sort(rank);
             
             
             
