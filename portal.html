@@ -46,6 +46,12 @@
     animation: tilt 0.5s;
     
 }
+          
+          
+          footer{text-align: center;
+          margin-top:4vh;
+              margin-bottom:2vh;
+          font-size:80%}
 
     </style>
 <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
@@ -161,14 +167,18 @@
           <table id='leaderboard'></table>
                   
    
-
+    <footer>
+      <i>Powered by MBCTF</i>
+      </footer>
 
               
               </div>
+              
 </div>
+          
       </div>
       
-      
+    
       <script crossorigin="anonymous" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script>
         //const host='http://localhost:5000'
@@ -294,7 +304,7 @@
         
         var playerArray=[];
         async function updateScoreboard(){
-            
+            playerArray=[];
             let leaderboard = document.getElementById("leaderboard");
             var serverRes = function() { return fetch(host+"/getScores", {
                   method: "GET",
@@ -303,12 +313,12 @@
             
             
             for (const [key, value] of Object.entries(y)) {
-                var datenum = luxon.DateTime.fromFormat(value[7], "dd/MM/yyyy, h:m:s")
+                var datenum = Date.parse(value[7])
     var ranking = value.slice(0,5).reduce((a, b) => a + b, 0)+ value.slice(5,7).reduce((a, b) => a + b, 0)*0.99;
     var levels = value.slice(0,5).reduce((a, b) => a + b, 0);
-                var datestring = datenum.plus({hours: 8}).toFormat('dd/MM/yyyy, h:m:s');
-                
-                if (datestring=='Invalid DateTime'){datestring='-'}
+                var datestring = new Date(datenum);
+                datestring = datestring.toLocaleString().replace(', ','<br>');
+                if (datestring=='1/1/2000<br>12:00:00 AM'){datestring='-'}
                 playerArray.push([ranking,key,levels,value[5],value[6],datestring,datenum])
 }
             
